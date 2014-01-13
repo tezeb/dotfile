@@ -1,0 +1,11 @@
+# add remote repository as remote to git
+git remote add -f splice https://github.com/sjl/splice.vim.git
+# add remote repository as subtree
+git subtree add https://github.com/sjl/splice.vim.git master --squash
+# update remote repository from remote splice(remember about branch ie. master)
+git subtree pull --prefix vim/.vim/bundle/splice splice master
+# for details and more info see:
+# http://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/
+# 
+# !!! remember about --squash !!!
+#
