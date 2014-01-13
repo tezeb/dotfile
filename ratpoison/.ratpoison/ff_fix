@@ -1,0 +1,17 @@
+#!/bin/sh
+
+out=`ratpoison -c "windows \%s %c %i" | grep --color=none '[*] Firefox'`
+if [[ $? -eq 0 ]];
+	then 
+		set -- junk $out
+		shift
+		pid=`xprop -id $3 _NET_WM_PID`
+		set -- junk $pid
+		shift
+		profile=`ps -p "$3" --no-headers -o args | grep -o '\-P \+[^ ]*'`
+		set -- junk $profile
+		shift
+		echo "$2"
+		firefox -P $2 -new-tab "about:blank"
+	else ratpoison -c "meta";
+fi

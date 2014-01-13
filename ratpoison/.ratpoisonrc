@@ -1,0 +1,34 @@
+exec ~/.xinitrc
+startup_message off
+definekey top Print exec scrot ~/Fotki/scrot/'%Y%m%d-%H%M%S.png'
+set barpadding 4 1
+#unmanage lxpanel
+unmanage panel
+#addhook quit exec claws-mail --exit
+addhook quit exec killall gpg-agent
+addhook quit exec rm -f ~/.gpg-agent-info
+addhook quit exec killall workrave
+addhook quit exec killall lxpanel
+
+sselect 1
+sselect 0
+setenv PADDING 0 0 0 0
+set padding 0 0 0 22
+#bind M exec ~/.ratpoison/fullScreen.sh
+bind L exec xscreensaver-command --lock
+bind B exec $HOME/.workrave/work.py -b
+exec wmname LG3D
+bind G gselect
+bind g groups
+#	fix meta key for firefox
+#bind t meta C-T
+#exec claws-mail
+#exec workrave
+#exec firefox
+#exec xterm
+#exec xterm
+#exec xterm
+bind t exec /home/bezet/.ratpoison/ff_fix
+frestore ~/.ratpoioson/s1_ff_root_dbg
+# for storing info about value of my virtual currencies
+bind m exec /home/bezet/.ratpoison/vc_save

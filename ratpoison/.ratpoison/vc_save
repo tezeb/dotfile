@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -e `date +"%Y.%m.%d %H:%M:%S"` '\t' `ratpoison -c prompt` >> /home/bezet/vc_data.txt 

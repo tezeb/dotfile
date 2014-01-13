@@ -1,0 +1,5 @@
+#!/bin/bash
+ratpoison -c "sselect 0"
+ratpoison -c "gselect 0"
+frames=`cat ~/.ratpoison/hide`
+ratpoison -c "frestore $frames"
