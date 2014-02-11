@@ -16,7 +16,7 @@ setenv PADDING 0 0 0 0
 set padding 0 0 0 22
 #bind M exec ~/.ratpoison/fullScreen.sh
 bind L exec xscreensaver-command --lock
-bind B exec $HOME/.ratpoisonrc/workrave.py -b
+bind B exec $HOME/.ratpoison/workrave.py -b
 exec wmname LG3D
 bind G gselect
 bind g groups
