@@ -33,6 +33,18 @@ GREP_COLORS=$GREP_COLORS
 #export MANPATH=/usr/share/man:~/mroot/usr/share/man/
 #	for idea to work with proprietary java
 export IDEA_JDK=/opt/java6/
+function cd() {
+  builtin cd $*
+	unset CSCOPE_DB
+	tmp=`pwd`
+	while [ "$tmp" != "" ]; do
+			if [[ -f "$tmp"/cscope.out ]]; then
+					export CSCOPE_DB="$tmp"/cscope.out;
+					break;
+			fi;
+			tmp=${tmp%/*};
+	done
+}
 source "$HOME"/.preexec.bash
 function preexec() {
   __internal_timer=$SECONDS;

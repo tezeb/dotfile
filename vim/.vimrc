@@ -60,8 +60,13 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 "set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
+" bezet - 27.08.2013
+set colorcolumn=81
+" let &colorcolumn=join(range(81,999),",")
 colorscheme b2
 syntax on
+" bezet - 9.9.2013
+set diffopt+=context:16
 
 " When starting to edit a file:
 "   For Java, C, and C++ files set formatting of comments and set
@@ -69,7 +74,8 @@ syntax on
 "   Don't change the sequence, it's important that the line with * comes first.
 autocmd BufRead * set formatoptions=tcql nocindent comments&
 au BufNewFile,BufRead *.g2 set filetype=c
-autocmd BufRead *.java,*.c,*.h,*.cc,*.cpp,*.hpp set formatoptions=ctroq cindent comments=sr:/**,mb:*,elx:*/,sr:/*,mb:*,elx:*/,:// number
+autocmd BufRead *.java,*.c,*.h,*.cc,*.cpp,*.hpp set formatoptions=ctq cindent comments=sr:/**,mb:*,elx:*/,sr:/*,mb:*,elx:*/,:// number expandtab
+autocmd BufRead *.py set expandtab
 call pathogen#infect()
 " settings for splice
 let g:splice_initial_layout_grid=1
