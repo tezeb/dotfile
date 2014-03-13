@@ -1,6 +1,5 @@
-exec ~/.xinitrc
 startup_message off
-definekey top Print exec scrot ~/Fotki/scrot/'%Y%m%d-%H%M%S.png'
+definekey top Print exec scrot $HOME/Fotki/scrot/'%Y%m%d-%H%M%S.png'
 set barpadding 4 1
 #unmanage lxpanel
 unmanage panel
@@ -23,12 +22,13 @@ bind g groups
 #	fix meta key for firefox
 #bind t meta C-T
 #exec claws-mail
-#exec workrave
+exec workrave
 #exec firefox
 #exec xterm
 #exec xterm
 #exec xterm
-bind t exec /home/bezet/.ratpoison/ff_fix
-frestore ~/.ratpoioson/s1_ff_root_dbg
+bind t exec $HOME/.ratpoison/ff_fix
+frestore "(frame :number 1 :x 0 :y 0 :width 980 :height 1028 :screenw 1680 :screenh 1050 :window 35651701 :last-access 1721 :dedicated 0),(frame :number 2 :x 980 :y 0 :width 700 :height 514 :screenw 1680 :screenh 1050 :window 23068685 :last-access 1722 :dedicated 0),(frame :number 3 :x 980 :y 514 :width 700 :height 514 :screenw 1680 :screenh 1050 :window 27262989 :last-access 1720 :dedicated 0),"
 # for storing info about value of my virtual currencies
-bind m exec /home/bezet/.ratpoison/vc_save
+bind m exec $HOME/.ratpoison/vc_save
+exec $HOME/.fehbg
