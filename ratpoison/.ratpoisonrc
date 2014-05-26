@@ -10,9 +10,10 @@ addhook quit exec killall workrave
 addhook quit exec killall lxpanel
 
 sselect 1
-sselect 0
-setenv PADDING 0 0 0 0
 set padding 0 0 0 22
+sselect 0
+set padding 0 0 0 22
+#setenv PADDING 0 0 0 0
 #bind M exec ~/.ratpoison/fullScreen.sh
 bind L exec xscreensaver-command --lock
 bind B exec $HOME/.ratpoison/workrave.py -b
@@ -27,8 +28,15 @@ exec workrave
 #exec xterm
 #exec xterm
 #exec xterm
-bind t exec $HOME/.ratpoison/ff_fix
+#bind t exec $HOME/.ratpoison/ff_fix
 frestore "(frame :number 1 :x 0 :y 0 :width 980 :height 1028 :screenw 1680 :screenh 1050 :window 35651701 :last-access 1721 :dedicated 0),(frame :number 2 :x 980 :y 0 :width 700 :height 514 :screenw 1680 :screenh 1050 :window 23068685 :last-access 1722 :dedicated 0),(frame :number 3 :x 980 :y 514 :width 700 :height 514 :screenw 1680 :screenh 1050 :window 27262989 :last-access 1720 :dedicated 0),"
 # for storing info about value of my virtual currencies
 bind m exec $HOME/.ratpoison/vc_save
 exec $HOME/.fehbg
+exec rpws init 2 -ak
+undefinekey top C-M-Right
+undefinekey top C-M-Left
+undefinekey top M-F1
+undefinekey top M-F2
+bind M-F1 rpwsm1
+bind M-F2 rpwsm2
