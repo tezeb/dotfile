@@ -33,3 +33,17 @@ GREP_COLORS=$GREP_COLORS
 #export MANPATH=/usr/share/man:~/mroot/usr/share/man/
 #	for idea to work with proprietary java
 export IDEA_JDK=/opt/java6/
+source "$HOME"/.preexec.bash
+function preexec() {
+  __internal_timer=$SECONDS;
+#  echo "preexec" $1 " > " $__internal_timer;
+}
+function precmd() {
+  __internal_timer_show=$(($SECONDS - ${__internal_timer:-0}))
+#    echo $__internal_timer_show;
+  unset __internal_timer
+}
+
+preexec_install
+export HISTTIMEFORMAT="%F %R %z "
+export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\u@\h:\W]$(tput setaf 2)\$([[ \$? -ne 0 ]] && tput setaf 1)(\${__internal_timer_show}s)$(tput setaf 4)\\$ \[$(tput sgr0)\]"
