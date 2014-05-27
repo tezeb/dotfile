@@ -11,10 +11,11 @@
 #  unset f
 #fi
 
-#syndaemon -t -k -d -i 2
+syndaemon -t -k -d -i 2
 (sleep 1 && lxpanel) &
 xsetroot -solid black -cursor_name left_ptr
 xrdb .Xresources
+nohup xbindkeys &
 xscreensaver -no-splash &
 rm -f "${HOME}/.gpg-agent-info"
 if [ ! -f "${HOME}/.gpg-agent-info" ]; then

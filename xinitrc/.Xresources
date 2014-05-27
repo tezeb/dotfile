@@ -315,6 +315,7 @@ xterm*utf8:	2
 *renderFont: true
 xterm*faceSize: 9
 *.vt100.translations: #override\n\   Shift <KeyPress> Select:select-cursor-start() select-cursor-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\   Shift <KeyPress> Insert:insert-selection(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\   ~Ctrl ~Meta <Btn2Up>:insert-selection(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\   <BtnUp>:select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
+xterm.borderWidth: 0
 
-! this will hopefully solve this stupid mulitiple loggin problem - 09.09.2012
+! bezet - this will hopefully solve this stupid mulitiple loggin problem - 09.09.2012
 *newLoginCommand: lxdm -c USER_SWITCH

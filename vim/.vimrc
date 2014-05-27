@@ -74,7 +74,9 @@ set diffopt+=context:16
 "   Don't change the sequence, it's important that the line with * comes first.
 autocmd BufRead * set formatoptions=tcql nocindent comments&
 au BufNewFile,BufRead *.g2 set filetype=c
-autocmd BufRead *.java,*.c,*.h,*.cc,*.cpp,*.hpp set formatoptions=ctq cindent comments=sr:/**,mb:*,elx:*/,sr:/*,mb:*,elx:*/,:// number expandtab
+"	TODO: compare following lines
+"autocmd BufRead *.java,*.c,*.h,*.cc,*.cpp,*.hpp set formatoptions=ctq cindent comments=sr:/**,mb:*,elx:*/,sr:/*,mb:*,elx:*/,:// number expandtab
+autocmd BufRead *.java,*.c,*.h,*.cc,*.cpp,*.hpp set formatoptions=ctroq cindent comments=sr:/**,mb:*,elx:*/,sr:/*,mb:*,elx:*/,://
 autocmd BufRead *.py set expandtab
 call pathogen#infect()
 " settings for splice

@@ -1,29 +1,39 @@
+chdir
 startup_message off
 definekey top Print exec scrot $HOME/Fotki/scrot/'%Y%m%d-%H%M%S.png'
 set barpadding 4 1
-#unmanage lxpanel
 unmanage panel
-#addhook quit exec claws-mail --exit
+addhook quit exec claws-mail --exit
 addhook quit exec killall gpg-agent
 addhook quit exec rm -f ~/.gpg-agent-info
 addhook quit exec killall workrave
 addhook quit exec killall lxpanel
+addhook restart exec killall lxpanel
 
 sselect 1
 set padding 0 0 0 22
 sselect 0
 set padding 0 0 0 22
-#setenv PADDING 0 0 0 0
-#bind M exec ~/.ratpoison/fullScreen.sh
+setenv PADDING 0 0 0 0
+bind M exec ~/.ratpoison/fullScreen.sh
 bind L exec xscreensaver-command --lock
+
 bind B exec $HOME/.ratpoison/workrave.py -b
+#	this is hack around some idiotic hardcodes in Java server
+#	it helps for better window handling in Java
 exec wmname LG3D
+
 bind G gselect
 bind g groups
+exec /usr/bin/rpws init 2 -k &
+exec claws-mail &
+exec /usr/bin/lxpanel &
+
+alias reload exec ~/utils/rat_g_store.sh store && ratpoison -c restart
 #	fix meta key for firefox
 #bind t meta C-T
 #exec claws-mail
-exec workrave
+#exec workrave
 #exec firefox
 #exec xterm
 #exec xterm
