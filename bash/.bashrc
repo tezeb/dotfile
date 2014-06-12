@@ -1,3 +1,4 @@
+unset command_not_found_handle
 alias ls="ls --color=auto"
 export EDITOR="vim"
 export LANG=en_GB.utf8
@@ -27,24 +28,12 @@ export WORKDAY_INTERVAL=$(( 12*60*60 ))
 
 #eval $( dircolors -b $HOME/.DIR_COLORS )
 
-unset command_not_found_handle
 GREP_COLORS=$GREP_COLORS
 #eval $(perl -I$HOME/mroot/usr/lib/perl5 -Mlocal::lib=$HOME/mroot/usr/)
 #export MANPATH=/usr/share/man:~/mroot/usr/share/man/
 #	for idea to work with proprietary java
 export IDEA_JDK=/opt/java6/
-function cd() {
-  builtin cd $*
-	unset CSCOPE_DB
-	tmp=`pwd`
-	while [ "$tmp" != "" ]; do
-			if [[ -f "$tmp"/cscope.out ]]; then
-					export CSCOPE_DB="$tmp"/cscope.out;
-					break;
-			fi;
-			tmp=${tmp%/*};
-	done
-}
+
 source "$HOME"/.preexec.bash
 function preexec() {
   __internal_timer=$SECONDS;
@@ -58,4 +47,19 @@ function precmd() {
 
 preexec_install
 export HISTTIMEFORMAT="%F %R %z "
-export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\u@\h:\W]$(tput setaf 2)\$([[ \$? -ne 0 ]] && tput setaf 1)(\${__internal_timer_show}s)$(tput setaf 4)\\$ \[$(tput sgr0)\]"
+hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print (total % 256)}')
+export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\u@\[$(tput setaf $hostnamecolor)\]\h\[$(tput setaf 4)\]:\W]$(tput setaf 2)\$([[ \$? -ne 0 ]] && tput setaf 1)(\${__internal_timer_show}s)$(tput setaf 4)\\$ \[$(tput sgr0)\]"
+
+function cd() {
+  builtin cd $*
+	unset CSCOPE_DB
+	tmp=`pwd`
+	while [ "$tmp" != "" ]; do
+			if [[ -f "$tmp"/cscope.out ]]; then
+					export CSCOPE_DB="$tmp"/cscope.out;
+					break;
+			fi;
+			tmp=${tmp%/*};
+	done
+}
+
