@@ -9,6 +9,8 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 function! ResCur()
   if line("'\"") > 0 && line("'\"") <= line("$")
     normal! g`"
+	normal! zz
+    return 1
   endif
 endfunction
 
