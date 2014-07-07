@@ -49,6 +49,8 @@ preexec_install
 export HISTTIMEFORMAT="%F %R %z "
 hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1*10}END{print (total % 256)}')
 export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\u@\[$(tput setaf $hostnamecolor)\]\h\[$(tput setaf 4)\]:\W]\[$(tput setaf 2)\]\$([[ \$? -ne 0 ]] && echo '\['$(tput setaf 1)'\]')(\${__internal_timer_show}s)\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
+#	disable ^S from sleeping terminal
+stty -ixon
 
 function cd() {
   builtin cd $*
@@ -63,3 +65,4 @@ function cd() {
 	done
 }
 
+export HISTCONTROL=ignoredups:ignorespace
