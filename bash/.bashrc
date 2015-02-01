@@ -46,13 +46,17 @@ function precmd() {
 
 preexec_install
 export HISTTIMEFORMAT="%F %R %z "
-hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print (total % 256)}')
-export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\u@\[$(tput setaf $hostnamecolor)\]\h\[$(tput setaf 4)\]:\W]$(tput setaf 2)\$([[ \$? -ne 0 ]] && tput setaf 1)(\${__internal_timer_show}s)$(tput setaf 4)\\$ \[$(tput sgr0)\]"
+hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1*10}END{print (total % 256)}')
+export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\u@\[$(tput setaf $hostnamecolor)\]\h\[$(tput setaf 4)\]:\W]\[$(tput setaf 2)\]\$([[ \$? -ne 0 ]] && echo '\['$(tput setaf 1)'\]')(\${__internal_timer_show}s)\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
 #	disable ^S from sleeping terminal
 stty -ixon
 
 function cd() {
-  builtin cd $*
+	if [ -z "$*" ]; then
+		builtin cd
+	else
+		builtin cd "$*"
+	fi
 	unset CSCOPE_DB
 	tmp=`pwd`
 	while [ "$tmp" != "" ]; do
@@ -64,4 +68,8 @@ function cd() {
 	done
 }
 
-export HISTCONTROL=ignoredups:ignorespace
+export HISTCONTROL=ignoredups:ignorespace:erasedups
+export HISTTIMEFORMAT="%F %R %z "
+export HISTFILESIZE=4096
+export HISTSIZE=4096
+export HISTIGNORE="clear"
