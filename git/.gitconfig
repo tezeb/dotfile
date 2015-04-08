@@ -2,6 +2,7 @@
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	diffhoriz = difftool -t horiz
+	changes = !CURRENT=\"$(basename `git symbolic-ref HEAD`)\" && git log \"origin/$CURRENT\"..\"$CURRENT\"
 
 [color]
         grep=true
@@ -13,14 +14,17 @@
 [diff]
 	tool = vimdiff
 
+[difftool "rev"]
+	cmd = "diff  --git --unchanged-line-format=\"\" --old-line-format=\"\" --new-line-format=\":%dn: %L\""
+
 [difftool "horiz"]
 	cmd = "vimdiff -o $LOCAL $REMOTE"
 
 [merge]
-	tool = splice
+	tool = threesome
 
-[mergetool "splice"]
-	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+[mergetool "threesome"]
+	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'set ch+=2' -c 'SpliceInit' -c 'set ch-=2'"
 	trustExitCode = true
 
 [push]
@@ -32,3 +36,8 @@
 [user]
 	name = bezet
 	email = bezet@outoftheblue.pl
+
+[rerere]
+	enabled = true
+[color "diff"]
+	modified = red
