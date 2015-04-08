@@ -1,3 +1,8 @@
+#	from Gentoo :)
+if [[ $- != *i* ]]; then
+	#	Shell is non-intercative(ie. scp, rcp)
+	return
+fi
 unset command_not_found_handle
 alias ls="ls --color=auto"
 export EDITOR="vim"
