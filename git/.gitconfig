@@ -28,16 +28,10 @@
 	trustExitCode = true
 
 [push]
-	default = current
-
-[status]
-	displaycommentprefix = true
-
-[user]
-	name = bezet
-	email = bezet@outoftheblue.pl
-
+	default = simple 
 [rerere]
 	enabled = true
 [color "diff"]
 	modified = red
+[status]
+	displaycommentprefix = true
