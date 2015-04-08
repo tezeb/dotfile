@@ -291,8 +291,8 @@ aterm*color9:      #e83a3d
 xterm*color10:     #35e956
 aterm*color10:     #35e956
 !bright-yellow
-xterm*color11:     #ffff2f
-aterm*color11:     #ffff2f
+xterm*color11:      #ffd700
+aterm*color11:      #66d700
 !bright-blue
 xterm*color12:     #3a53f0
 aterm*color12:     #3a53f0
