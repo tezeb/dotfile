@@ -3,3 +3,4 @@
 #
 killall gpg-agent
 rm -f "${HOME}/.gpg-agent-info"
+clear

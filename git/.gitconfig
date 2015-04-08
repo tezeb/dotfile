@@ -20,6 +20,10 @@
 [difftool "horiz"]
 	cmd = "vimdiff -o $LOCAL $REMOTE"
 
+[user]
+#	name = bezet
+#	email = 
+
 [merge]
 	tool = threesome
 
