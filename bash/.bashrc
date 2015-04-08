@@ -7,12 +7,6 @@ unset command_not_found_handle
 alias ls="ls --color=auto"
 export EDITOR="vim"
 export LANG=en_GB.utf8
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-  . "${HOME}/.gpg-agent-info"
-  export GPG_AGENT_INFO
-else
-  eval $(gpg-agent --daemon --write-env-file)
-fi
 
 # User specific aliases and functions
 #alias gcc='gcc -O -Wall -pedantic --std=c99 -Wshadow -pedantic-errors -Wtraditional'
