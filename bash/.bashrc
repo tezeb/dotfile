@@ -10,8 +10,8 @@ export LANG=en_GB.utf8
 
 # User specific aliases and functions
 #alias gcc='gcc -O -Wall -pedantic --std=c99 -Wshadow -pedantic-errors -Wtraditional'
-alias gcc='gcc -O -Wall -pedantic --std=c99 -Wshadow -pedantic-errors'
-alias g++='g++ --std=c++0x -Wall -Werror -pedantic -pedantic-errors -Wshadow'
+alias gcc='gcc -O -Wall -Wextra -pedantic --std=c99 -Wshadow -pedantic-errors'
+alias g++='g++ --std=c++0x -Wall -Wextra -Werror -pedantic -pedantic-errors -Wshadow'
 alias grep='grep --color=auto'
 
 #   this variables are used with make counter
@@ -73,3 +73,5 @@ export HISTTIMEFORMAT="%F %R %z "
 export HISTFILESIZE=4096
 export HISTSIZE=4096
 export HISTIGNORE="clear"
+export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+export PATH=$PATH:'/home/bezet/.gem/ruby/2.2.0/bin'

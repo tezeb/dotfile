@@ -320,3 +320,5 @@ xterm.borderWidth: 0
 
 ! bezet - this will hopefully solve this stupid mulitiple loggin problem - 09.09.2012
 *newLoginCommand: lxdm -c USER_SWITCH
+! bezet - this will hopefully solve clipboard problem
+XTerm*selectToClipboard: true
