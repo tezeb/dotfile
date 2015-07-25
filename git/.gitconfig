@@ -39,3 +39,9 @@
 	modified = red
 [status]
 	displaycommentprefix = true
+
+[user]
+	name = tezeb
+	email = tezeb
+[credential "https://github.com"]
+	username = tezeb

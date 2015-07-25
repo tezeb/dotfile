@@ -76,8 +76,10 @@ autocmd BufRead * set formatoptions=tcql nocindent comments&
 au BufNewFile,BufRead *.g2 set filetype=c
 "	TODO: compare following lines
 "autocmd BufRead *.java,*.c,*.h,*.cc,*.cpp,*.hpp set formatoptions=ctq cindent comments=sr:/**,mb:*,elx:*/,sr:/*,mb:*,elx:*/,:// number expandtab
-autocmd BufRead *.java,*.c,*.h,*.cc,*.cpp,*.hpp set formatoptions=ctroq cindent comments=sr:/**,mb:*,elx:*/,sr:/*,mb:*,elx:*/,://
-autocmd BufRead *.py set expandtab
+autocmd BufRead,BufNewFile *.java,*.c,*.h,*.cc,*.cpp,*.hpp set formatoptions=ctroq cindent comments=sr:/**,mb:*,elx:*/,sr:/*,mb:*,elx:*/,://
+autocmd BufRead,BufNewFile *.py set expandtab
+au BufRead,BufNewFile *.pde set filetype=arduino
+au BufRead,BufNewFile *.ino set filetype=arduino
 call pathogen#infect()
 " settings for splice
 let g:splice_initial_layout_grid=1
