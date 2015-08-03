@@ -2,6 +2,8 @@ chdir
 startup_message off
 definekey top Print exec scrot $HOME/Fotki/scrot/'%Y%m%d-%H%M%S.png'
 set barpadding 4 1
+set border 1
+#unmanage lxpanel
 unmanage panel
 addhook quit exec claws-mail --exit
 addhook quit exec killall gpg-agent
