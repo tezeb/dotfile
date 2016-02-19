@@ -44,10 +44,10 @@ function precmd() {
   unset __internal_timer
 }
 
-preexec_install
 export HISTTIMEFORMAT="%F %R %z "
-hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1*10}END{print (total % 256)}')
-export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\u@\[$(tput setaf $hostnamecolor)\]\h\[$(tput setaf 4)\]:\W]\[$(tput setaf 2)\]\$([[ \$? -ne 0 ]] && echo '\['$(tput setaf 1)'\]')(\${__internal_timer_show}s)\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
+hostnamecolor=$(hostname | od | tr ' ' '\n' | awk 'BEGIN{i=10}{total = total + $1*i; i=i+10}END{print (total % 256)}')
+HOSTNAME=$(hostname)
+export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\u@\[$(tput setaf $hostnamecolor)\]${HOSTNAME}\[$(tput setaf 4)\]:\W]\[$(tput setaf 34)\]\$([[ \$? -ne 0 ]] && echo '\['$(tput setaf 1)'\]')(\${__internal_timer_show}s[\D{%H:%M}])\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
 #	disable ^S from sleeping terminal
 stty -ixon
 
@@ -75,3 +75,6 @@ export HISTSIZE=4096
 export HISTIGNORE="clear"
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 export PATH=$PATH:'/home/bezet/.gem/ruby/2.2.0/bin'
+alias less="less -RE"
+
+preexec_install

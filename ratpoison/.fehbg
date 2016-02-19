@@ -1,2 +1,1 @@
-#!/bin/sh
-feh  --image-bg black --bg-center '/home/bezet/.ratpoison/violin_wall.jpg' 
+feh  --image-bg black --bg-center '/home/local/CORVIL/bzglobicki/.ratpoison/violin_wall.jpg' 

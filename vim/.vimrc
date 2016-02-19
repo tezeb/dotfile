@@ -52,6 +52,7 @@ set cinoptions=(0,u0,U0
 set cinoptions=(0,u0,U0,{1s,>2s,e-s,^-s sw=2 ts=2 expandtab
 " for vim in ssh(and xterm)
 set t_Co=256
+set number
 
 nnoremap n nzz
 nnoremap N Nzz
@@ -89,3 +90,4 @@ set splitright
 " 01.10.2013 - bezet - testing
 filetype plugin indent on
 syntax enable
+let g:mwDefaultHighlightingPalette='extended'
