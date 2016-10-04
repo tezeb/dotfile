@@ -81,6 +81,11 @@ autocmd BufRead,BufNewFile *.java,*.c,*.h,*.cc,*.cpp,*.hpp set formatoptions=ctr
 autocmd BufRead,BufNewFile *.py set expandtab
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
+"	make pfp loadable only on request
+"	for pathogen 2.4 version (coming soon?)
+"	let g:pathogen_blacklist = []
+let g:pathogen_disabled = []
+call add(g:pathogen_disabled, 'pfp-vim')
 call pathogen#infect()
 " settings for splice
 let g:splice_initial_layout_grid=1
