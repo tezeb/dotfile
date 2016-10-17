@@ -4,7 +4,7 @@ if [[ $- != *i* ]]; then
 	return
 fi
 unset command_not_found_handle
-alias ls="ls --color=auto"
+alias ls="ls --color=always"
 export EDITOR="vim"
 export LANG=en_GB.utf8
 
@@ -75,6 +75,6 @@ export HISTSIZE=4096
 export HISTIGNORE="clear"
 command -v ruby 2>/dev/null && export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 export PATH=$PATH:'/home/bezet/.gem/ruby/2.2.0/bin'
-alias less="less -RE"
+alias less="less -RFX"
 
 preexec_install
