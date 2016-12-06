@@ -73,7 +73,7 @@ export HISTTIMEFORMAT="%F %R %z "
 export HISTFILESIZE=4096
 export HISTSIZE=4096
 export HISTIGNORE="clear"
-command -v ruby 2>/dev/null && export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+command -v ruby 1>/dev/null && export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 export PATH=$PATH:'/home/bezet/.gem/ruby/2.2.0/bin'
 alias less="less -RFX"
 
