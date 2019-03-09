@@ -11,7 +11,7 @@ if [[ "$pass"q == "q" ]]; then
 fi
 
 # extract id of current active ethernet/wifi connection
-net_id=$(nmcli -t c s --active | grep "ethernet\|wifi" | cut -f2 -d:)
+net_id=$(nmcli -t c s --active | grep "ethernet\|802-11-wireless" | cut -f2 -d:)
 if [[ "$net_id"q == "q" ]]; then
   echo "No active internet connection found!"
   exit 1
@@ -20,7 +20,8 @@ fi
 dname=$(date +"%Y%m%d_%s")
 mkdir $dname
 cd $dname
-curl -so ovpn.zip https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
+echo "Downloading ovpn.zip"
+curl -#o ovpn.zip https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
 
 if [[ $? -ne 0 ]]; then
 	echo "Download failed: $?"
@@ -74,7 +75,8 @@ done
 t=$(basename "${tservers[0]}" ".ovpn")
 nmcli connection modify "$net_id" connection.secondaries "$t"
 
-read -s "Set up VPN for all ethernet/wifi connections? [y/N]" setAll
+echo -n "Set up VPN for all ethernet/wifi connections? [y/N] "
+read setAll
 
 if [[ "$setAll" == "y" || "$setAll" == "Y" ]]; then
   nmcli -t c s --active | grep "ethernet\|wifi" | cut -f2 -d: | while read net; do
@@ -86,4 +88,10 @@ fi
 #	clean-up
 rm -Rf ovpn_tcp ovpn_udp
 
-echo "Update fw and run : " nmcli connection up "eth0 with VPN"
+echo -n "Activate previous connection? [Y/n] "
+read act
+if [[ "$act" != "n" && "$act" != "N" ]]; then
+  nmcli connection up "$net_id"
+else
+  echo "Update fw and run : 'nmcli connection up \"$net_id\"'"
+fi
