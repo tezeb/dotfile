@@ -311,7 +311,8 @@ aterm*background: #FFFFFF
 xterm*foreground: #000000
 aterm*foreground: #000000
 xterm*utf8:	2
-*faceName: -*-consolas-medium-r-normal-*-17-120-100-100-m-*-*-*
+!*faceName: -*-consolas-medium-r-normal-*-17-120-100-100-m-*-*-*
+*faceName: DejaVu LGC Sans Mono:size=9:weight=80:width=100
 *renderFont: true
 xterm*faceSize: 9
 xterm*termName: xterm-256color
@@ -326,4 +327,5 @@ xterm.borderWidth: 0
 ! bezet - this will hopefully solve this stupid mulitiple loggin problem - 09.09.2012
 *newLoginCommand: lxdm -c USER_SWITCH
 ! bezet - this will hopefully solve clipboard problem
-XTerm*selectToClipboard: true
+xterm*selectToClipboard: true
+xterm*maximized: true
